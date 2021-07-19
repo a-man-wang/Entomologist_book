@@ -1,0 +1,15 @@
+import unittest
+from TestRunner import HTMLTestRunner
+import time
+
+
+# 定义测试目录为当前目录的test_case文件夹
+test_dir = './test_case'
+suits = unittest.defaultTestLoader.discover(test_dir, pattern="test*.py")
+now_time = time.strftime("%Y-%m-%d %H-%M-%S")
+
+
+if __name__ == '__main__':
+    fb = open('./test_report/' + now_time + 'result.html', 'wb')
+    runner = HTMLTestRunner(stream=fb, title="测试百度搜索", description="WIN10 Chrome")
+    runner.run(suits)
